@@ -88,6 +88,10 @@ public class MainActivity2 extends AppCompatActivity {
 
                 intent.putExtra("job", MainActivity2.this.job.getText().toString());
 
+                Bitmap bm=((BitmapDrawable) im.getDrawable()).getBitmap();
+
+                intent.putExtra("im",bm);
+
                 setResult(RESULT_OK, intent);
 
                 finish();
@@ -111,7 +115,9 @@ public class MainActivity2 extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1337) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
-            ImageView imageview = (ImageView) findViewById(R.id.imageView); //sets imageview as the bitmap
+
+            ImageView imageview = findViewById(R.id.imageView); //sets imageview as the bitmap
+
             imageview.setImageBitmap(image);
         }
     }
